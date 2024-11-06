@@ -1,7 +1,6 @@
-from fastapi import FastAPI, Response
+from fastapi import Response
 from fastapi.responses import JSONResponse
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import exists
 from dotenv import load_dotenv
 import hashlib
@@ -9,16 +8,9 @@ import hashlib
 from flowers import *
 from users import *
 from auth import *
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
+from db import *
 
 load_dotenv()
-Base.metadata.create_all(bind=engine)
-SessionLocal = sessionmaker(autoflush=False, bind=engine)
-db = SessionLocal()
-app = FastAPI()
 
 @app.post("/flower")
 async def add_flower(request: Request):
@@ -58,6 +50,6 @@ async def sign_in(request: Request, response: Response):
     response.set_cookie(key="users_access_token", value=access_token, httponly=True)
     return JSONResponse(content={"status" : "ok"}, status_code=status.HTTP_200_OK)
 
-# @app.get("/me")
-# def get_me(user_data: User = Depends(get_current_user)):
-#     return    
+@app.get("/me")
+def get_me(user_data: User = Depends(get_current_user)):
+    return get_current_user()
