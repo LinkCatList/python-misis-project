@@ -53,3 +53,67 @@ async def sign_in(request: Request, response: Response):
 @app.get("/me")
 def get_me(user_data: User = Depends(get_current_user)):
     return get_current_user()
+
+
+@app.get("/cart")
+async def list_cart(current_user: User = Depends(get_current_user)):
+    # Fetch all cart items for the user, including flower details
+    cart_items = (
+        db.query(CartItem)
+        .options(joinedload(CartItem.flower))  # Use joinedload to retrieve flower details with the cart item
+        .filter(CartItem.userId == current_user.id)
+        .all()
+    )
+
+    # Format the response data
+    cart_data = [
+        {
+            "flower_id": item.flowerId,
+            "title": item.flower.title,
+            "description": item.flower.description,
+            "cost": item.flower.cost,
+            "quantity": item.qty,
+        }
+        for item in cart_items
+    ]
+    return JSONResponse(content={"cart": cart_data}, status_code=status.HTTP_200_OK)
+
+
+@app.post("/cart")
+async def add_to_cart(flower_id: int, qty: int, current_user: User = Depends(get_current_user)):
+    # Check if the flower exists
+    flower = db.get(Flower, flower_id)
+    if flower is None:
+        return JSONResponse(content={"reason": "Flower not found"}, status_code=status.HTTP_404_NOT_FOUND)
+
+    # Check if item already in cart; if so, update quantity
+    cart_item = db.query(CartItem).filter(CartItem.userId == current_user.id,
+                                          CartItem.flowerId == flower_id).one_or_none()
+    if cart_item:
+        cart_item.qty += qty
+    else:
+        cart_item = CartItem(userId=current_user.id, flowerId=flower_id, qty=qty)
+        db.add(cart_item)
+
+    db.commit()
+    return JSONResponse(content={"status": "Item added to cart"}, status_code=status.HTTP_201_CREATED)
+
+
+@app.delete("/cart")
+async def remove_from_cart(flower_id: int, qty: int, current_user: User = Depends(get_current_user)):
+    # Find the cart item for the user and flower
+    cart_item = db.query(CartItem).filter(CartItem.userId == current_user.id,
+                                          CartItem.flowerId == flower_id).one_or_none()
+    if cart_item is None:
+        return JSONResponse(content={"reason": "Cart item not found"}, status_code=status.HTTP_404_NOT_FOUND)
+
+    # Check if the quantity to remove is valid
+    if qty >= cart_item.qty:
+        # If the quantity to remove is equal or more than the current quantity, delete the item
+        db.delete(cart_item)
+    else:
+        # Otherwise, just reduce the quantity
+        cart_item.qty -= qty
+
+    db.commit()
+    return JSONResponse(content={"status": "Item removed from cart"}, status_code=status.HTTP_200_OK)
