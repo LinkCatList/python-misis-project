@@ -8,8 +8,11 @@ from users import *
 from db import *
 
 def get_db():
-    session = SessionLocal()
-    pass
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 #Добавление товара на сайт
 
@@ -20,19 +23,19 @@ class Product(BaseModel):
     cost: float
 
 @app.post("/add_product/")
-def add_product(flower_id: int, db: Session = Depends(get_db)):
-    new_product = Product(name = product.name, description = product.description, cost = product.cost)
+async def add_product(product_id: int, db: Session = Depends(get_db)):
+    new_product = Product(name = Product.name, description = Product.description, cost = Product.cost)
     db.add(new_product)
     db.commit()
     db.refresh(new_product)
 
-    return {"message": "Товар добавлен на сайт", "product_id": product.id}
+    return {"message": "Товар добавлен на сайт", "product_id": Product.id}
 
 #Удаление товара с сайта по id
 
 @app.delete("/delete_product/")
-def delete_product(flower_id: int):
-    product_to_delete = db.query(Product).filter(Product.id == product.id).first()
+async def delete_product(product_id: int):
+    product_to_delete = db.query(Product).filter(Product.id == Product.id).first()
     if not product_to_delete:
         raise HTTPException(status_code=404, detail="Товар не найден")
 
@@ -93,13 +96,6 @@ class AdminCreate(BaseModel):
     username: str
     password: str
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
 @app.post("/admins/", response_model=AdminCreate)
 async def create_admin(admin: AdminCreate, db: Session = Depends(get_db)):
     db_admin = Admin(username=admin.username, password=admin.password)
@@ -108,6 +104,7 @@ async def create_admin(admin: AdminCreate, db: Session = Depends(get_db)):
     db.refresh(db_admin)
     return db_admin
 
+@app.delete("/admins/{admin_id}")
 async def delete_admin(admin_id: int, db: Session = Depends(get_db)):
     db_admin = db.query(Admin).filter(Admin.id == admin_id).first()
     if not db_admin:
