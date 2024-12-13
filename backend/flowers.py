@@ -7,3 +7,4 @@ class Flower(Base):
     title = Column(String)
     description = Column(String)
     cost = Column(Integer)
+    imageUri = Column(String)

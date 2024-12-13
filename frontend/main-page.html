@@ -29,13 +29,12 @@
     </div>
   </header>
     <main>
-        <div>
-            <img style="height: 560px; width: 1440px"src="public/main_flowers1.jpeg" alt="Цветочек">
+        <div class="background1-main-page">
             <h0>Цветы которые говорят</h0>
             <h3>Доставка свежих букетов для вас</h3>
             <a href ="/catalog"><buttton type=" button">Перейти в каталог</buttton></a>
         </div>
-        <div>
+        <div class="background2-main-page">
             <h1>Букеты для любого повода</h1>
             <h4>День рождения? Годовщина? Свидание?
                 Мы знаем что делать!
@@ -43,9 +42,8 @@
                 на любой запах и цвет
                 Доставим вовремя до двери
                 Всё для ваших любимых</h4>
-            <img style="height: 515px; width: 483px"src="public/main_flowers2.jpeg" alt="Цветочек">
         </div>
-        <div>
+        <div class="background3-main-page">
             <h1>Почему мы?</h1>
             <ul>
                 <li>Доступная цена</li>
@@ -55,9 +53,8 @@
                 <li>Всегда свежие цветы</li>
                     <li>Тщательно следим за состоянием цветов</li>
             </ul>
-            <img style="height: 656px; width: 615px"src="public/main_flowers3.jpeg" alt="Цветочек">
         </div>
-        <div>
+        <div class="background4-main-page">
             <h1>Остались вопросы?</h1>
             <h4>Мы свяжемся с Вами и ответим на них</h4>
             <form id="questionform">
@@ -68,38 +65,50 @@
                 <input type="tel" id="phone" name="phone" required>
                 <br>
             </form>
-            <img style="height: 500px; width: 635px"src="public/main_flowers4.jpeg" alt="Цветочек">
         </div>
     </main>
-      <footer>
-        <a href="/"><img style="height: 57px; width: 57px"src="public/image.png" alt="Логотип"> </a>
-        <a href="/">floricia</a>
-        <h3>Меню</h3>
-        <ul>
-          <li><a href="/about">О нас</a></li>
-          <li><a href="/catalog">Каталог</a></li>
-          <li><a href="/delivery">Доставка и оплата</a></li>
-          <li><a href="/reviews">Отзывы</a></li>
-          <li><a href="/contacts">Контакты</a></li>
-        </ul>
-        <h3>Покупателям</h3>
-        <ul>
-          <li><a href="public-offer.pdf" target="_blank">Публичная оферта</a></li>
-          <li><a href="garantees.pdf" target="_blank">Гарантии</a></li>
-          <li><a href="privacy-policy.pdf" target="_blank">Политика конфедициальности</a></li> 
-        </ul>
-        <h3>Инвесторам</h3>
-        <ul>
-          <li><a href="tenders.pdf" target="_blank">Тендеры</a></li>
-          <li><a href="for_suppliers.pdf" target="_blank">Поставщикам</a></li>
-          <li><a href="document_flow.pdf" target="_blank">Документооборот</a></li> 
-        </ul>
-        <ul>
-          <li><a href="telegram.com"><img style="height: 40px; width: 40px"src="public/telegram.png" alt="Телеграмм магазина"> </a></li>
-          <li><a href="instagram.com"><img style="height: 40px; width: 40px"src="public/instagram.png" alt="Инстаграмм магазина"> </a></li>
-          <li><a href="whatsapp.com"><img style="height: 40px; width: 40px"src="public/whatsapp.png" alt="Телефон для связи"> </a></li>
-        </ul>
+    <footer class="site-footer">
+      <a class="site-footer-logo1"href="/"><img style="height: 57px; width: 57px; text-decoration: none;"src="public/image.png" alt="Логотип"> </a>
+      <a class="site-footer-logo"href="/">floricia</a>
+      <div class="footer-container">
+
+        <div >
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; font-weight: 500; size: 20px">Меню</h3>
+          <ul class="site-footer-text">
+            <li><a href="/about">О нас</a></li>
+            <li><a href="/catalog">Каталог</a></li>
+            <li><a href="/delivery">Доставка и оплата</a></li>
+            <li><a href="/reviews">Отзывы</a></li>
+            <li><a href="/contacts">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; font-weight: 500; size: 20px">Покупателям</h3>
+          <ul class = "site-footer-text">
+            <li><a href="public-offer.pdf" target="_blank">Публичная оферта</a></li>
+            <li><a href="garantees.pdf" target="_blank">Гарантии</a></li>
+            <li><a href="privacy-policy.pdf" target="_blank">Политика конфедициальности</a></li> 
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; font-weight: 500; size: 20px">Инвесторам</h3>
+          <ul class="site-footer-text">
+            <li><a href="tenders.pdf" target="_blank">Тендеры</a></li>
+            <li><a href="for_suppliers.pdf" target="_blank">Поставщикам</a></li>
+            <li><a href="document_flow.pdf" target="_blank">Документооборот</a></li> 
+          </ul>
+        </div>
+
+      </div>
+      
+      <ul style="list-style: none;">
+        <li><a href="telegram.com"><img style="height: 40px; width: 40px"src="public/telegram.png" alt="Телеграмм магазина"> </a></li>
+        <li><a href="instagram.com"><img style="height: 40px; width: 40px"src="public/instagram.png" alt="Инстаграмм магазина"> </a></li>
+        <li><a href="whatsapp.com"><img style="height: 40px; width: 40px"src="public/whatsapp.png" alt="Телефон для связи"> </a></li>
+      </ul>
     </footer>
+    <div id="message"></div>
+
 
 </body>
 </html>
