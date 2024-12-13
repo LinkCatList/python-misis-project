@@ -116,4 +116,3 @@ async def remove_from_cart(flower_id: int, qty: int, current_user: User = Depend
 
     db.commit()
     return JSONResponse(content={"status": "Item removed from cart"}, status_code=status.HTTP_200_OK)
-
