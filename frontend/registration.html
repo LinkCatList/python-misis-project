@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="registration">
+<body class="body-registration">
   <header class="site-header">
     <div style="display: flex; align-items: center; gap: 16px;">
       <a class="site-header-logo1" href="/"><img style="height: 57px; width: 57px"src="public/image.png" alt="Логотип"> </a>
@@ -28,22 +28,30 @@
       <a href ="profile"><img style="height:38px; width: 38px; margin-left: 30px; margin-right: 50px" src="public/profile.png" alt="Профиль"></a>
     </div>
   </header>
-    <main style="display: block; min-height: calc(100vh - 100px - 320px)">
-      <h1>Регистрация</h1>
-      <form id="registrationForm">
-          <label for="name">Имя</label>
-          <input type="name" id="name" name="name" required>
+    <main class="main-registration-content main-registration" style="display: block; min-height: calc(100vh - 100px - 320px)">
+      <h1 style="color: #11302D; font-weight: 500; font-family: Montserrat Alternates, sans-serif; line-height: 43.88px; margin-top: 20%;">Регистрация</h1>
+      <form class="registration-form" id="registrationForm">
+          <div class="registration-form1">
+            <label class="form-label" for="name">Имя</label>
+            <input class="form-input" type="name" id="name" name="name" placeholder="Введите имя" required>
+          </div>
           <br>
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" required>
+          <div class="registration-form1">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="Введите E-mail" required>
+          </div>
           <br>
-          <label for="password">Пароль</label>
-          <input type="password" id="password" name="password" required>
+          <div class="registration-form1">
+            <label class="form-label" for="password">Пароль</label>
+            <input class="form-input" type="password" id="password" name="password" placeholder="Введите пароль" required>
+          </div>
           <br>
-          <label for="password">Повторите пароль</label>
-          <input type="password" id="password" name="password" required>
+          <div class="registration-form1">
+            <label class="form-label" for="password">Повторите пароль</label>
+            <input class="form-input" type="password" id="password" name="password" placeholder="Повторите пароль" required>
+          </div>
           <br>
-          <button type="submit">Зарегистрироваться</button>
+          <button class="button" type="submit">Зарегистрироваться</button>
       </form>
     </main>
     <footer class="site-footer">
@@ -52,7 +60,7 @@
       <div class="footer-container">
 
         <div >
-          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; weight: 500; size: 20px">Меню</h3>
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; font-weight: 500; size: 20px">Меню</h3>
           <ul class="site-footer-text">
             <li><a href="/about">О нас</a></li>
             <li><a href="/catalog">Каталог</a></li>
@@ -62,7 +70,7 @@
           </ul>
         </div>
         <div>
-          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; weight: 500; size: 20px">Покупателям</h3>
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; font-weight: 500; size: 20px">Покупателям</h3>
           <ul class = "site-footer-text">
             <li><a href="public-offer.pdf" target="_blank">Публичная оферта</a></li>
             <li><a href="garantees.pdf" target="_blank">Гарантии</a></li>
@@ -70,7 +78,7 @@
           </ul>
         </div>
         <div>
-          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; weight: 500; size: 20px">Инвесторам</h3>
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; font-weight: 500; size: 20px">Инвесторам</h3>
           <ul class="site-footer-text">
             <li><a href="tenders.pdf" target="_blank">Тендеры</a></li>
             <li><a href="for_suppliers.pdf" target="_blank">Поставщикам</a></li>
