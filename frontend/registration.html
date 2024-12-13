@@ -28,7 +28,7 @@
       <a href ="profile"><img style="height:38px; width: 38px; margin-left: 30px; margin-right: 50px" src="public/profile.png" alt="Профиль"></a>
     </div>
   </header>
-    <main>
+    <main style="display: block; min-height: calc(100vh - 100px - 320px)">
       <h1>Регистрация</h1>
       <form id="registrationForm">
           <label for="name">Имя</label>
@@ -46,30 +46,41 @@
           <button type="submit">Зарегистрироваться</button>
       </form>
     </main>
-    <footer>
-      <a href="/"><img style="height: 57px; width: 57px"src="public/image.png" alt="Логотип"> </a>
-      <a href="/">floricia</a>
-      <h3>Меню</h3>
-      <ul>
-        <li><a href="/about">О нас</a></li>
-        <li><a href="/catalog">Каталог</a></li>
-        <li><a href="/delivery">Доставка и оплата</a></li>
-        <li><a href="/reviews">Отзывы</a></li>
-        <li><a href="/contacts">Контакты</a></li>
-      </ul>
-      <h3>Покупателям</h3>
-      <ul>
-        <li><a href="public-offer.pdf" target="_blank">Публичная оферта</a></li>
-        <li><a href="garantees.pdf" target="_blank">Гарантии</a></li>
-        <li><a href="privacy-policy.pdf" target="_blank">Политика конфедициальности</a></li> 
-      </ul>
-      <h3>Инвесторам</h3>
-      <ul>
-        <li><a href="tenders.pdf" target="_blank">Тендеры</a></li>
-        <li><a href="for_suppliers.pdf" target="_blank">Поставщикам</a></li>
-        <li><a href="document_flow.pdf" target="_blank">Документооборот</a></li> 
-      </ul>
-      <ul>
+    <footer class="site-footer">
+      <a class="site-footer-logo1"href="/"><img style="height: 57px; width: 57px; text-decoration: none;"src="public/image.png" alt="Логотип"> </a>
+      <a class="site-footer-logo"href="/">floricia</a>
+      <div class="footer-container">
+
+        <div >
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; weight: 500; size: 20px">Меню</h3>
+          <ul class="site-footer-text">
+            <li><a href="/about">О нас</a></li>
+            <li><a href="/catalog">Каталог</a></li>
+            <li><a href="/delivery">Доставка и оплата</a></li>
+            <li><a href="/reviews">Отзывы</a></li>
+            <li><a href="/contacts">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; weight: 500; size: 20px">Покупателям</h3>
+          <ul class = "site-footer-text">
+            <li><a href="public-offer.pdf" target="_blank">Публичная оферта</a></li>
+            <li><a href="garantees.pdf" target="_blank">Гарантии</a></li>
+            <li><a href="privacy-policy.pdf" target="_blank">Политика конфедициальности</a></li> 
+          </ul>
+        </div>
+        <div>
+          <h3 style="color:#F9DBDB; font-family: 'Montserrat Alternates', sans-serif; weight: 500; size: 20px">Инвесторам</h3>
+          <ul class="site-footer-text">
+            <li><a href="tenders.pdf" target="_blank">Тендеры</a></li>
+            <li><a href="for_suppliers.pdf" target="_blank">Поставщикам</a></li>
+            <li><a href="document_flow.pdf" target="_blank">Документооборот</a></li> 
+          </ul>
+        </div>
+
+      </div>
+      
+      <ul style="list-style: none;">
         <li><a href="telegram.com"><img style="height: 40px; width: 40px"src="public/telegram.png" alt="Телеграмм магазина"> </a></li>
         <li><a href="instagram.com"><img style="height: 40px; width: 40px"src="public/instagram.png" alt="Инстаграмм магазина"> </a></li>
         <li><a href="whatsapp.com"><img style="height: 40px; width: 40px"src="public/whatsapp.png" alt="Телефон для связи"> </a></li>

@@ -56,8 +56,59 @@ html, body {
     text-decoration: none;
 }
 .site-footer {
-
+    background-color: #385553;
+    display: flex; 
+    align-items: center; 
+    width: 1440px;
+    height: 320px;
+    gap: 32px;
+    opacity: 0px;
+    padding: 10px;
 }
+
+.site-footer-logo {
+    color:#F9DBDB;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 43.88px;
+    margin-right: 70px;
+}
+
+.site-footer-logo1{
+    text-decoration: none;
+}
+
+.footer-container {
+    display: flex;
+    align-items: start;
+    gap: 32px;
+}
+
+.site-footer-text {
+    
+    font-family: "Montserrat Alternates", sans-serif;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.5px;
+    text-align: left;
+    text-decoration: none;
+    list-style: none;
+    margin-bottom: 20px;
+}
+.site-footer-text a{
+    text-decoration: none;
+    list-style: none;
+    color: #F9DBDB;
+}
+
+.site-footer li {
+    margin-bottom: 25px;
+}
+
 body.main-page {
 
 }
