@@ -6,9 +6,11 @@ from dotenv import load_dotenv
 import hashlib
 
 from flowers import *
+from admin import *
 from users import *
 from auth import *
 from db import *
+from cart import *
 
 load_dotenv()
 
@@ -116,3 +118,88 @@ async def remove_from_cart(flower_id: int, qty: int, current_user: User = Depend
 
     db.commit()
     return JSONResponse(content={"status": "Item removed from cart"}, status_code=status.HTTP_200_OK)
+
+@app.post("/add_product")
+async def add_product(request: Request):
+    data = await request.json()
+    new_product = Flower(title = data["title"], description = data["description"], cost = data["cost"])
+    db.add(new_product)
+    db.commit()
+
+    return {"message": "Товар добавлен на сайт", "product_id": new_product.id}
+
+# #Удаление товара с сайта по id
+
+@app.delete("/delete_product/{product_id}")
+async def delete_product(product_id: int):
+    product_to_delete = db.query(Flower).filter(Flower.id == product_id).first()
+    if not product_to_delete:
+        raise HTTPException(status_code=404, detail="Товар не найден")
+
+    db.delete(product_to_delete)
+    db.commit()
+
+    return {"message": "Товар удалён"}
+
+# #Изменение цены товара
+
+@app.put("/update_product_price/{product_id}")
+async def update_product_price(
+    product_id: int,
+    price_data: float,
+):
+    product = db.query(Flower).filter(Flower.id == product_id).first()
+    if not product:
+        raise HTTPException(status_code=404, detail="Товар не найден")
+    
+    product.cost = price_data.new_price
+    db.commit()
+    db.refresh(product)
+
+    return JSONResponse(content={"product_id": product.id}, status_code=status.HTTP_200_OK)
+
+# #Изменение описания товара
+
+@app.put("/update_product_description/{product_id}")
+async def update_product_description(
+    product_id: int,
+    description_data: str,
+):
+    product = db.query(Flower).filter(Flower.id == product_id).first()
+    if not product:
+        raise HTTPException(status_code=404, detail="Товар не найден")
+
+    product.description = description_data.new_description
+    db.commit()
+    db.refresh(product)
+
+    return {
+        "message": "Описание товара обновлено",
+        "product_id": product.id,
+        "new_description": product.description,
+    }
+
+# #Добавление и удаление новых администраторов
+
+
+@app.post("/admins/")
+async def create_admin(request: Request):
+    data = await request.json()
+    db_admin = Admin(username=data["username"].username, password=["password"].password)
+    db.add(db_admin)
+    db.commit()
+    db.refresh(db_admin)
+
+    return JSONResponse({
+        "id": db_admin.id,
+        "username": db_admin.username
+    }, status_code=200)
+
+@app.delete("/admins/{admin_id}")
+async def delete_admin(admin_id: int):
+    db_admin = db.query(Admin).filter(Admin.id == admin_id).first()
+    if not db_admin:
+        raise HTTPException(status_code=404, detail="Администратор не найден")
+
+    db.delete(db_admin)
+    db.commit()
