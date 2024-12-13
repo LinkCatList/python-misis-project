@@ -54,7 +54,6 @@ async def sign_in(request: Request, response: Response):
 def get_me(user_data: User = Depends(get_current_user)):
     return get_current_user()
 
-
 @app.get("/cart")
 async def list_cart(current_user: User = Depends(get_current_user)):
     # Fetch all cart items for the user, including flower details

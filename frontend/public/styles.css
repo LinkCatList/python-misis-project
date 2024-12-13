@@ -1,0 +1,72 @@
+html, body {
+    margin: 0;
+}
+
+.site-header {
+    background-color: #F1E9EB;
+    border-color: #B4616B;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 1440px;
+    height: 80px;
+    gap: 0px;
+    border: 0px 0px 0px 0px;
+    opacity: 0px;
+    
+
+}
+.site-header-menu {
+    font-family: "Montserrat Alternates";
+    text-decoration: none; 
+    color: #11302D; 
+    weight: 500;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 0px;
+    margin-right: 30px; 
+}
+.site-header-menu li {
+    display: inline-block; 
+    margin-left: 0px;
+    margin-right: 50px; 
+}
+
+.site-header-menu li:last-child {
+    margin-right: 0; 
+}
+
+.site-header-menu a{
+    text-decoration: none;
+    color: #11302D;
+}
+.site-header-logo {
+    color:#B4616B;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.38px;
+    
+}
+.site-header-logo1{
+    margin-left: 60px;
+    text-decoration: none;
+}
+.site-footer {
+
+}
+body.main-page {
+
+}
+body.registration {
+
+}
+body.login {
+
+}
+body.about {
+
+}
